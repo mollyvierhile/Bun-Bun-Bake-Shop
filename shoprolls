@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bun Bun Bake Shop</title>
+    <meta charset="UTF-8">
+    <!-- styles -->
+      <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <header>
+    <h1>Bun Bun Bake Shop</h1>
+    <h2> Pittsburgh, PA </h2>
+    <div>
+        <nav>
+        <a href="home.html">Home</a> -
+        <a href="shop rolls.html">Shop Rolls</a> -
+        <a href="location">Location</a> 
+    </nav>
+</div>
+<html>
+
