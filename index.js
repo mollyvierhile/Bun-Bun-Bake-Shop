@@ -16,28 +16,20 @@ window.onload = function() {
         var newCost = value * 3.00;
         var newCostString = '$' + newCost + '.00';
         
-        cost.innerHTML = newCostString;
+        costDiv.innerHTML = newCostString;
     }
     
 /* change photo if different type of glaze is selected */
     var glazeSelection = document.getElementById('glaze-selection');
-    if (glazeSelection) {
-        glazeSelection.onchange = function(event) {
-            var value = event.target.value;
-            var img = document.getElementById('roll-image');
-            if (value && value !== 'none') {
-                if (img) {
-                    var imageSource = 'roll-' + value + '.png';
-                    img.setAttribute('src', imageSource);
-                }
-            } else {
-                if (img) {
-                    var imageSource = 'bunz.jpg';
-                    img.setAttribute('src', imageSource);
-                }
-            }
-            //bunz
+    glazeSelection.onchange = function(event) {
+        var value = glazeSelection.value;
+        var img = document.getElementById('roll-image');
+        if (value === 'none') {
+            var imageSource = 'bunz.jpg';
+        } else {
+            var imageSource = 'roll-' + value + '.png';
         }
+        img.setAttribute('src', imageSource);
     }
     
 /* update roll price */    
@@ -47,17 +39,23 @@ window.onload = function() {
         var glazeSelectionElement = document.getElementById('glaze-selection');
         var glaze = glazeSelectionElement.value;
         // cartButton.innerHTML = "Added to Cart!";
+        var quantityBuns = document.getElementById('quantityOfBuns')
+        var quantity = quantityBuns.value;
+        var rolltype = "pumpkinspice";
+            
+        var newItem = {
+            glaze: glaze,
+            quantity: quantity,
+            rolltype: rolltype,
+        }
+        
         
         
 /* store in local storage */
-        var cartItem = {
-            glaze: none,
-            quantity: inputValue,
-        };
+       
         var currentCart = GetCartFromStorage();
-        currentCart.push(cartItem);
+        currentCart.push(newItem);
         SetCartToStorage(currentCart);
-        window.localStorage.countPumpkin = "3";
     }   
 }
 
@@ -69,6 +67,7 @@ function GetCartFromStorage() {
     }
     return [];
 }
+
 function SetCartToStorage(cart) {
     window.localStorage.setItem('BUN_BUN_CART', JSON.stringify(cart));
 }
