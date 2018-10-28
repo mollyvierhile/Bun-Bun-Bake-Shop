@@ -27,7 +27,7 @@ window.onload = function() {
         if (value === 'none') {
             var imageSource = 'bunz.jpg';
         } else {
-            var imageSource = 'roll-' + value + '.png';
+            var imageSource = value + '.png';
         }
         img.setAttribute('src', imageSource);
     }
@@ -41,7 +41,7 @@ window.onload = function() {
         // cartButton.innerHTML = "Added to Cart!";
         var quantityBuns = document.getElementById('quantityOfBuns')
         var quantity = quantityBuns.value;
-        var rolltype = "pumpkinspice";
+        var rolltype = "Pumpkin Spice";
             
         var newItem = {
             glaze: glaze,
