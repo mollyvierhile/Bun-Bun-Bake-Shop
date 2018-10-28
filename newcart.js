@@ -36,18 +36,15 @@ window.onload = function() {
             var rolltype = item.rolltype;
             var glaze = item.glaze;
             var quantity = item.quantity;
-            var totalItem = rolltype + glaze + quantity
+            var totalItem = "<tr><td>" + rolltype + glaze + quantity + "</td></tr>"
             totalTable = totalTable + totalItem;
         }
 
         var cartTable = document.getElementById('cart-items');
-        var finalTable = '$' + totalTable;
+        var finalTable = totalTable;
     
         cartTable.innerHTML = finalTable;    
     
-    }
-
-
 
 function GetCartFromStorage() {
     var cart = window.localStorage.getItem('BUN_BUN_CART');
@@ -61,5 +58,34 @@ function GetCartFromStorage() {
 function SetCartToStorage(cart) {
     window.localStorage.setItem('BUN_BUN_CART', JSON.stringify(cart));
 }
-    
+
 } 
+    
+
+    const rollitem = {
+        roll: 'Roll Type',
+        glaze: 'Glaze',
+        quantity: 'Quantity',
+    }
+    
+    
+    //puts data into HTML element
+    
+    const markup = `
+    <tr class="rollitem">
+        <td><p><img style="float: left; margin: 0px 0px 0px 50px;" src="bunphoto1.jpg" width="150"></td>
+        <td><p>${rollitem.roll}<br><br>Glaze:${rollitem.glaze}<br><br>Quantity:${rollitem.quantity}</p></td>
+        <td><button id="del">X</button></td>
+    </tr>`;
+    
+    cartTable.innerHTML = markup;  
+    console.log('works')
+    
+    }
+    
+    //gets cart from storage
+    
+    var cart = GetCartFromStorage();
+    renderTable(cart);
+    console.log("works")
+    
