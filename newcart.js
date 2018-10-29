@@ -1,5 +1,7 @@
 window.onload = function() {
     
+    //get the cart from local storage
+    
     function GetCartFromStorage() {
     var cart = window.localStorage.getItem('BUN_BUN_CART');
     console.log(cart);
@@ -31,10 +33,12 @@ window.onload = function() {
         cartPrice.innerHTML = finalPrice;    
     
     }
+    
+    //finds images of the items in the cart
 
     function findImage(item) {
         if (item.glaze === 'None') {
-            var imageSource = 'bunphoto1.jpg';
+            var imageSource = 'None.png';
         } else {
             var imageSource = item.glaze + '.png';
         }
@@ -42,7 +46,7 @@ window.onload = function() {
         
     } 
     
-    //renders cart items in a table
+    //renders cart items in a table through HTML string
 
     function renderTable(cart) {
         var totalTable = "";
@@ -51,7 +55,9 @@ window.onload = function() {
             var totalItem = `
             <tr class="rollitem">
             <td><p><img style="float: left; margin: 0px 0px 0px 50px;" src="${findImage(item)}"width="150"></td>
-            <td><p>${item.rolltype}<br><br>Glaze: ${item.glaze}<br><br>Quantity:${item.quantity}</p></td>
+            <td><p>${item.rolltype}<br><br>
+                Glaze: ${item.glaze}<br><br>
+                Quantity: ${item.quantity}</p></td>
             <td><button class="del">X</button></td>
             </tr>`
             totalTable = totalTable + totalItem;
@@ -74,6 +80,8 @@ window.onload = function() {
     }
     renderCart() 
  
+    //delete items from cart using onClick functionality
+    
     var table = document.getElementById('cart-items');
         table.onclick = function(event) {
             console.log(event)

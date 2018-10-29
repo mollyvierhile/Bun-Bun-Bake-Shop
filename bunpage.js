@@ -1,17 +1,17 @@
 window.onload = function() {
-/* stringify Cart Content */
+
+// stringify Cart Content 
     var cartContent = GetCartFromStorage();
     if (cartContent && cartContent.length > 0) {
         // alert(JSON.stringify(cartContent));
     }
     
-/* update price when selecting different quantities of buns */
+// update price when selecting different quantities of buns 
+
     var quantityBuns = document.getElementById('quantityOfBuns');
     var costDiv = document.getElementById('cost');
     quantityBuns.onchange = function() {
         var value = quantityBuns.value;  
-        console.log('Quantity changed');
-        console.log(value);
         
         var newCost = value * 3.00;
         var newCostString = '$' + newCost + '.00';
@@ -19,39 +19,40 @@ window.onload = function() {
         costDiv.innerHTML = newCostString;
     }
     
-/* change photo if different type of glaze is selected */
+// change photo if different type of glaze is selected 
+
     var glazeSelection = document.getElementById('glaze-selection');
     glazeSelection.onchange = function(event) {
         var value = glazeSelection.value;
         var img = document.getElementById('roll-image');
         if (value === 'none') {
-            var imageSource = 'bunz.jpg';
+            var imageSource = 'None.jpg';
         } else {
             var imageSource = value + '.png';
         }
         img.setAttribute('src', imageSource);
     }
     
-/* update roll price */    
+// update roll price if a different quantity is selected   
+ 
     var cartButton = document.getElementById('cartbutton');
     cartButton.onclick = function() {
-        // GET ROLL VALUE
+        // get roll value
         var glazeSelectionElement = document.getElementById('glaze-selection');
         var glaze = glazeSelectionElement.value;
-        // cartButton.innerHTML = "Added to Cart!";
-        var quantityBuns = document.getElementById('quantityOfBuns')
+        cartButton.innerHTML = "Added to Cart!";
+        var quantityBuns = document.getElementById('quantityOfBuns');
         var quantity = quantityBuns.value;
-        var rolltype = "Pumpkin Spice";
+        var rolltype = 'Pumpkin Spice';
             
         var newItem = {
             glaze: glaze,
             quantity: quantity,
             rolltype: rolltype,
         }
+                
         
-        
-        
-/* store in local storage */
+// store cart in local storage 
        
         var currentCart = GetCartFromStorage();
         currentCart.push(newItem);
