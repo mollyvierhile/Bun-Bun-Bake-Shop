@@ -43,7 +43,7 @@ window.onload = function() {
         cartButton.innerHTML = "Added to Cart!";
         var quantityBuns = document.getElementById('quantityOfBuns');
         var quantity = quantityBuns.value;
-        var rolltype = 'Pumpkin Spice';
+        var rolltype = document.getElementById('buntitle').innerText;
             
         var newItem = {
             glaze: glaze,
